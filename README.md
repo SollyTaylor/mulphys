@@ -26,10 +26,38 @@
   geometry g = r.read("/path/to/xxxx.cgns")
   ```
 
-  ​
 
-#### 运行几何转换写出（geometry reader writer）
+
+#### 运行几何转换写出（writer）
 
 
 
 #### 运行求解器（solver）
+
+
+
+processes
+
+* file -> reader -> geometry
+* geometry -> writer -> file
+* geometry [, field, environment]   -> solver -> field
+* field (init, bc) -> dynamics -> field
+
+runner
+
+* model(dynamics1[,dynmiacs2...]) + reporter
+* batch + model(dynamics1[,dynmiacs2...]) + reporter
+* controller + model(dynamics1[,dynmiacs2...]) + reporter
+
+simulation
+
+* runner1 -> runner2 -> ... ->runnerN
+
+
+
+1. 以上每一个对象都需要dump出来，查看其中的详细信息
+2. solver不关心变量名称，只关心（1）场变量类型、（2）转换方式是格心格点插值积分、（3）输入输出几何
+3. ​
+
+
+
