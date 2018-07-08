@@ -1,0 +1,35 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type" : "object",
+	"definitions" : {
+		"def_samples" : {
+			"type" : "array",
+			"items" : {
+				"type" : "array",
+				"items" : {
+					"type" : "number"
+				},
+				"minItems" : 1
+			},
+			"minItems" : 1
+		}
+	},
+	"properties" : {
+		"x_samples" : {
+			"$ref" : "#/definitions/def_samples"
+		},
+		"y_samples" : {
+			"$ref" : "#/definitions/def_samples"
+		},
+		"x_inputs" : {
+			"type" : "array",
+			"items" : {
+				"type" : "number"
+			}
+		},
+		"configurations" : {
+			"type" : "object"
+		}
+	},
+	"required" : ["x_samples", "y_samples", "x_inputs", "configurations"]
+}

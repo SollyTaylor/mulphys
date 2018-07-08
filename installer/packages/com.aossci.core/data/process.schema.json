@@ -1,0 +1,261 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions" : {
+		"def_marker_name" : {
+			"type" : "string",
+			"pattern" :  "(^$|^[a-zA-Z][a-zA-Z0-9_]+$)"
+		}
+	},
+	"type" : "object",
+	"properties" : {
+		"Selected" : {
+			"type" : "string",
+			"enum" : ["PureCode", "SimCode"]
+		},
+		"SimCode" : {
+			"type" : "object",
+			"properties" : {
+				"method" : {
+					"type" : "string",
+					"enum" : ["ProE", "CATIAV5", "ABAQUS", "ANSYS_MACHENICALS", "UserDefined"]
+				},
+				"CommandFilePath" : {
+					"type" : "string"
+				},
+				"ComponentFiles" : {
+					"type" : "array",
+					"items" : {
+						"type" : "object",
+						"properties" : {
+							"name" : {"type" : "string"},
+							"hash_code" : {"type" : "string"}
+						},
+						"required" : ["name", "hash_code"]
+					}
+				},
+				"IntermediateFiles" : {
+					"type" : "array",
+					"items" : {
+						"type" : "object",
+						"properties" : {
+							"process_id" : {"type" : "string"},
+							"relative_file_path" : {"type" : "string"},
+							"name" : {"type" : "string"},
+							"hash_code" : {"type" : "string"}
+						},
+						"required" : ["process_id", "relative_file_path", "name", "hash_code"]
+					}
+				},
+				"InputSettings" : {
+					"type" : "object",
+					"properties" : {
+						"files" : {
+							"type" : "array",
+							"items" : {
+								"type" : "object",
+								"properties" : {
+									"name" : { "type": "string"},
+									"hash_code" : { "type" : "string" },
+									"global_vars" : {
+										"type" : "array",
+										"items" : {
+											"type" : "object",
+											"properties" : {
+												"port" : {
+													"type" : "string",
+													"pattern" : "^[a-zA-Z_][a-zA-Z0-9_]*$"
+												},
+												"location" : {
+													"type" : "string"
+												},
+												"default" : {
+													"type" : "number"
+												}
+											},
+											"required" : ["port", "location", "default"]
+										}
+									},
+									"local_vars" : {
+										"type" : "object",
+										"properties" : {
+											"inputs" : {
+												"type" : "array",
+												"items" : {
+													"type" : "object",
+													"properties" : {
+														"port" : { "type" : "string", "pattern" : "^[a-zA-Z_][a-zA-Z0-9_]*$"},
+														"location" : {"type" : "string"}
+													}
+												}
+											},
+											"outputs" : {
+												"type" : "array",
+												"items" : {
+													"type" : "object",
+													"properties" : {
+														"port" : { 
+															"type" : "string", 
+															"pattern" : "^[a-zA-Z_][a-zA-Z0-9_]*$"
+														},
+														"location" : {
+															"type" : "string",
+															"pattern" : "[0-9]+:[0-9]+"
+														}
+													},
+													"required" : ["port", "location"]
+												}
+											},
+											"local_code" : {
+												"type" : "array",
+												"items" : {
+													"type" : "string"
+												}
+											}
+										},
+										"required" : ["inputs", "outputs", "local_code"]
+									}
+								}
+							}
+						}
+					},
+					"required" : ["files"]
+				},
+				"OutputSettings" : {
+					"type" : "object",
+					"properties" : {
+						"files" : {
+							"type" : "array",
+							"items" : {
+								"type" : "object",
+								"properties" : {
+									"name" : {
+										"type" : "string"
+									},
+									"hash_code" : { "type" : "string" },
+									"markers" : {
+										"type" : "array",
+										"items" : {
+											"type" : "object",
+											"properties" : {
+												"name" : {
+													"$ref" : "#/definitions/def_marker_name"
+												},
+												"keyword" : {
+													"type" : "string",
+													"pattern" : "^[a-zA-Z][a-zA-Z0-9_]*$"
+												},
+												"offset_index" : {
+													"type" : "integer",
+													"minimum" : 0
+												},
+												"parent_marker" : {"type" : "string"}
+											},
+											"required" : ["name", "keyword", "offset_index", "parent_marker"]
+										}
+									},
+									"variables" : {
+										"type" : "array",
+										"items" : {
+											"type" : "object",
+											"properties" : {
+												"port" : {
+													"type" : "string",
+													"pattern" :  "^[a-zA-Z_][a-zA-Z0-9_]*$"
+												},
+												"marker" : {
+													"$ref" : "#/definitions/def_marker_name"
+												},
+												"offset_index" : {
+													"type" : "integer",
+													"minimum": 0
+												}
+											},
+											"required" : ["port", "marker", "offset_index"]
+										}
+									}
+								},
+								"required" : ["name", "markers", "variables"]
+							}
+						}
+					},
+					"required" : ["files"]
+				}
+			},
+			"required" : ["method", "CommandFilePath", "ComponentFiles", "IntermediateFiles", "InputSettings", "OutputSettings"]
+		},
+		"PureCode" : {
+			"type" : "object",
+			"properties" : {
+				"method" : {
+					"type" : "string",
+					"enum" : ["Exprtk", "Python"]
+				},
+				"Code" : {
+					"type" : "array",
+					"items" : {
+						"type" : "string"
+					}
+				},
+				"InputSettings" : {
+					"type" : "object",
+					"properties" : {
+						"variables" : {
+							"type" : "array"
+						}
+					}
+				},
+				"OutputSettings" : {
+					"type" : "object",
+					"properties" : {
+						"variables" : {
+							"type" : "array"
+						}
+					}
+				}
+			},
+			"required" : ["method", "Code", "InputSettings", "OutputSettings"]
+		},
+		"SurrogateModel" : {
+			"type" : "object",
+			"properties" : {
+				"activated" : {"type" : "boolean"},
+				"sample_groups" : {
+					"type" : "array",
+					"items" : {
+						"type" : "object"
+					}
+				},
+				"settings" : {
+					"type" : "object",
+					"properties" : {
+						"name" : {"type" : "string"},
+						"config" : {
+							"type" : "object"
+						}
+					},
+					"required" : ["name", "config"]
+				},
+				"trial_inputs" : {
+					"type" : "object",
+					"properties" : {
+						"hash_code" : {
+							"type" : "string"
+						},
+						"trial_values" : {
+							"type" : "array",
+							"items" : {
+								"type" : "array",
+								"items" : {
+									"type" : "number"
+								}
+							}
+						}
+					},
+					"required" : ["hash_code", "trial_values"]
+				}
+			},
+			"required" : ["activated", "sample_groups", "settings"]
+		}
+	},
+	"required" : ["Selected", "PureCode", "SimCode", "SurrogateModel"]
+}

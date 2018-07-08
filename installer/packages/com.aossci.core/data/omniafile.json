@@ -1,0 +1,175 @@
+{
+    "common": {
+        "case_id": "0714434d-c665-11e6-834d-94de80faa045",
+        "running_type": "local_sequential",
+        "project_general_settings" : {
+            "recycle_policy" : 1,
+            "simcode_sampling_runner_manager_settings" : {
+                "maximum_simcode_processes" : 4,
+                "process_start_intervals" : 2000
+            }
+        }
+    },
+    "correlation_matrix": {
+        "activated": false
+    },
+    "extension": {
+        "activated": false
+    },
+    "node_data": [
+        {
+            "data": {
+                "correlation_matrix": {
+                    "activated": false
+                },
+                "datagenerator": {
+                    "plugin_method_name": "SimpleRandomSampling",
+                    "settings": {
+                        "number_of_points": 100,
+                        "confidence_degree" : 0.95
+                    }
+                },
+                "plugin_class_name": "MonteCarloSampling",
+                "result_variables": {
+                },
+                "variables": {
+                    "x": {
+                        "Distribution": "Normal",
+                        "LowerLimit": -3,
+                        "UpperLimit": 3,
+                        "eta": 0,
+                        "sigma": 1
+                    }
+                }
+            },
+            "data_properties": [
+                {
+                    "Option": "Structure",
+                    "Type": "EngineeringType"
+                },
+                {
+                    "Option": "Storage",
+                    "Type": "EnvironmentType"
+                },
+                {
+                    "Option": "Dimension",
+                    "Type": "FactorType"
+                },
+                {
+                    "Option": "Cutting",
+                    "Type": "ProcessingType"
+                },
+                {
+                    "Option": "Scheme",
+                    "Type": "ProductBatchNumber"
+                },
+                {
+                    "Option": "A",
+                    "Type": "RiskFactor"
+                },
+                {
+                    "Option": "A",
+                    "Type": "RiskProbability"
+                }
+            ],
+            "id": "aircraft",
+            "type": "root",
+            "uid": "7ER7cK26Iw50"
+        },
+        {
+            "data": {
+                "PureCode": {
+                    "Code": [
+                        ""
+                    ],
+                    "InputSettings": {
+                        "variables": [
+                            "x"
+                        ]
+                    },
+                    "OutputSettings": {
+                        "variables": [
+                        ]
+                    },
+                    "method": "Exprtk"
+                },
+                "Selected": "PureCode",
+                "SimCode": {
+                    "CommandFilePath": "",
+                    "ComponentFiles": [
+                    ],
+                    "InputSettings": {
+                        "files": [
+                        ]
+                    },
+                    "IntermediateFiles": [
+                    ],
+                    "OutputSettings": {
+                        "files": [
+                        ]
+                    },
+                    "method": "UserDefined"
+                },
+                "SurrogateModel": {
+                    "activated": false,
+                    "hash_code": "",
+                    "sample_groups": [
+                    ],
+                    "settings": {
+                        "config": {
+                        },
+                        "name": ""
+                    },
+                    "trial_inputs": {
+                        "hash_code": "",
+                        "trial_values": [
+                        ]
+                    }
+                }
+            },
+            "data_properties": [
+                {
+                    "Option": "Structure",
+                    "Type": "EngineeringType"
+                },
+                {
+                    "Option": "Storage",
+                    "Type": "EnvironmentType"
+                },
+                {
+                    "Option": "Dimension",
+                    "Type": "FactorType"
+                },
+                {
+                    "Option": "Cutting",
+                    "Type": "ProcessingType"
+                },
+                {
+                    "Option": "Scheme",
+                    "Type": "ProductBatchNumber"
+                },
+                {
+                    "Option": "A",
+                    "Type": "RiskFactor"
+                },
+                {
+                    "Option": "A",
+                    "Type": "RiskProbability"
+                }
+            ],
+            "id": "engine",
+            "type": "process",
+            "uid": "aasXnX4ilaDM"
+        }
+    ],
+    "tree": {
+        "children": [
+            {
+                "children": [
+                ],
+                "id": "engine"
+            }
+        ],
+        "id": "aircraft"
+    }
+}

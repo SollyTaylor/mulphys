@@ -1,0 +1,27 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type" : "object",
+	"properties" : {
+		"DataProperties" : {
+			"type" : "array",
+			"items" : {
+				"type" : "object",
+				"properties" : {
+					"Type" : {
+						"type" : "string"
+					},
+					"Alias" : {
+						"type" : "string"
+					},
+					"Options" : {
+						"type" : "array",
+						"items" : { "type" : "string" }
+					},
+					"Default" : { "type" : "integer" }
+				},
+				"required" : ["Type","Alias","Options","Default"]
+			}
+		}
+	},
+	"required" : ["DataProperties"]
+}

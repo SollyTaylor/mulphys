@@ -1,0 +1,84 @@
+{
+	"data": {
+                "PureCode": {
+                    "Code": [
+                        ""
+                    ],
+                    "InputSettings": {
+                        "variables": [
+                        ]
+                    },
+                    "OutputSettings": {
+                        "variables": [
+                        ]
+                    },
+                    "method": "Exprtk"
+                },
+                "Selected": "PureCode",
+                "SimCode": {
+                    "CommandFilePath": "",
+                    "ComponentFiles": [
+                    ],
+                    "InputSettings": {
+                        "files": [
+                        ]
+                    },
+                    "IntermediateFiles": [
+                    ],
+                    "OutputSettings": {
+                        "files": [
+                        ]
+                    },
+                    "method": "UserDefined"
+                },
+                "SurrogateModel": {
+                    "activated": false,
+                    "hash_code": "",
+                    "sample_groups": [
+                    ],
+                    "settings": {
+                        "config": {
+                        },
+                        "name": ""
+                    },
+                    "trial_inputs": {
+                        "hash_code": "",
+                        "trial_values": [
+                        ]
+                    }
+                }
+            },
+            "data_properties": [
+                {
+                    "Option": "Structure",
+                    "Type": "EngineeringType"
+                },
+                {
+                    "Option": "Storage",
+                    "Type": "EnvironmentType"
+                },
+                {
+                    "Option": "Dimension",
+                    "Type": "FactorType"
+                },
+                {
+                    "Option": "Cutting",
+                    "Type": "ProcessingType"
+                },
+                {
+                    "Option": "Scheme",
+                    "Type": "ProductBatchNumber"
+                },
+                {
+                    "Option": "A",
+                    "Type": "RiskFactor"
+                },
+                {
+                    "Option": "A",
+                    "Type": "RiskProbability"
+                }
+            ],
+            "id": "xxxx",
+            "type": "process",
+            "uid": ""
+}

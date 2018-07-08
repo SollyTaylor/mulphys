@@ -1,0 +1,64 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type" : "object",
+	"properties" : {
+		"signature" : {
+			"type" : "string",
+			"pattern" : "^[a-zA-Z0-9]*$"
+		},
+		"settings" : {
+			"type" : "object",
+			"properties" : {
+				"type" : {
+					"type" : "string",
+					"enum" : ["ExternalData"]
+				},
+				"name" : {
+					"type" : "string"
+				},
+				"config" : {
+					"type" : "object"
+				}
+			},
+			"required" : ["type", "name", "config"]
+		},
+		"data" : {
+			"type" : "object",
+			"properties" : {
+				"inputs" : {
+					"type" : "array",
+					"items" : {
+						"type" : "array",
+						"items" : {
+							"type" : "number"
+						},
+						"minItems" : 1
+					},
+					"minItems" : 1
+				},
+				"outputs" : {
+					"type" : "array",
+					"items" : {
+						"type" : "array",
+						"items" : {
+							"oneOf" : [
+								{"type" : "number"},
+								{"type" : "null"}
+							]
+						},
+						"minItems" : 1
+					},
+					"minItems" : 1
+				}
+			},
+			"required" : ["inputs", "outputs"]
+		},
+		"hash_code" : {
+			"type":"string"
+		},
+		"is_selected" : {
+			"type" : "boolean"
+		}
+	},
+	"required" : ["signature", "settings", "data", "hash_code", "is_selected"]
+}

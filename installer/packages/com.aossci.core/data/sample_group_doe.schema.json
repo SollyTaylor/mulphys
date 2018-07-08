@@ -1,0 +1,75 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type" : "object",
+	"properties" : {
+		"signature" : {
+			"type" : "string",
+			"pattern" : "^[a-zA-Z0-9]*$"
+		},
+		"settings" : {
+			"type" : "object",
+			"properties" : {
+				"type" : {
+					"type" : "string",
+					"enum" : ["DoE"]
+				},
+				"name" : {
+					"type" : "string",
+					"pattern" : "^omnia_DoE_[a-zA-Z0-9]+$"
+				},
+				"config" : {
+					"type" : "object"
+				},
+				"input_ranges" : {
+					"type" : "array",
+					"items" : {
+						"type" : "object",
+						"properties" : {
+							"Distribution" : {"type" : "string", "enum" : ["Trivial"]},
+							"LowerLimit" : {"type" : "number"},
+							"UpperLimit" : {"type" : "number"}
+						},
+						"required" : ["Distribution", "LowerLimit", "UpperLimit"]
+					}
+				}
+			},
+			"required" : ["type", "name", "config", "input_ranges"]
+		},
+		"data" : {
+			"type" : "object",
+			"properties" : {
+				"inputs" : {
+					"type" : "array",
+					"items" : {
+						"type" : "array",
+						"items" : {
+							"type" : "number"
+						},
+						"minItems" : 1
+					},
+					"minItems" : 1
+				},
+				"outputs" : {
+					"type" : "array",
+					"items" : {
+						"type" : "array",
+						"items" : { 
+							"oneOf" : [
+								{"type" : "number"},
+								{"type" : "null"}
+							]
+						}
+					}
+				}
+			},
+			"required" : ["inputs", "outputs"]
+		},
+		"hash_code" : {
+			"type":"string"
+		},
+		"is_selected" : {
+			"type" : "boolean"
+		}
+	},
+	"required" : ["signature", "settings", "data", "hash_code", "is_selected"]
+}

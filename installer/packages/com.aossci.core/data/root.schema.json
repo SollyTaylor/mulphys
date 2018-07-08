@@ -1,0 +1,61 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions" : {},
+	"type" : "object",
+	"properties" : {
+		"plugin_class_name" : {
+			"type" : "string",
+			"enum" : ["DoE", "ReliabilityTechnique", "MonteCarloSampling"]
+		},
+		"datagenerator" : {
+			"type" : "object",
+			"properties" : {
+				"plugin_method_name" : {
+					"type" : "string",
+					"pattern" : "^[a-zA-Z_][a-zA-Z0-9_]*$"
+				},
+				"settings" : {
+					"type" : "object"
+				},
+				"required" : ["plugin_method_name", "settings"]
+			}
+		},
+		"variables" : {
+			"type" : "object",
+			"properties" : {
+				"Distribution" : {
+					"type" : "string"
+				}
+			}
+		},
+		"result_variables" : {
+			"type" : "object",
+			"patternProperties" : {
+				"^[a-zA-Z_][a-zA-Z0-9_]*$" : {
+					"type" : "object",
+					"properties" : {
+						"LowerLimit" : { "type" : "number"},
+						"UpperLimit" : { "type" : "number"}
+					}
+				}
+			}
+		},
+		"correlation_matrix" : {
+			"type" : "object",
+			"properties" : {
+				"activated" : {"type" : "boolean"},
+				"square_matrix" : {
+					"type" : "array"
+				}
+			},
+			"required" : ["activated"]
+		}
+	},
+	"required" : [
+		"plugin_class_name", 
+		"datagenerator", 
+		"variables", 
+		"result_variables",
+		"correlation_matrix"
+	]
+}

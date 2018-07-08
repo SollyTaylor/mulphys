@@ -1,0 +1,19 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type" : "object",
+	"definitions" : {
+		"def_output" : {
+			"type" : "array",
+			"items" : {
+				"type" : "number"
+			},
+			"minItems" : 1
+		}
+	},
+	"properties" : {
+		"Results" : {
+			"$ref" : "#/definitions/def_output"
+		}
+	},
+	"required" : ["Results"]
+}

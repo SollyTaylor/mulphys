@@ -1,0 +1,18 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type" : "object",
+	"properties" : {
+		"current_tree_id" : {
+			"type" : "string",
+			"pattern" : "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[89aAbB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}"
+		},
+		"strux_trees" : {
+			"type" : "array",
+			"items" : {
+				"type" : "object"
+			},
+			"minItems" : 1
+		}
+	},
+	"required" : ["current_tree_id", "strux_trees"]
+}

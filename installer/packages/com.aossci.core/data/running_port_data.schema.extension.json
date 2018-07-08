@@ -1,0 +1,70 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type" : "object",
+	"properties" : {
+		"dumping_time" : {
+			"type" : "string"
+		},
+		"dumping_data" : {
+			"type" : "object",
+			"properties" : {
+				"port_keys" : {
+					"type" : "array",
+					"items" : {
+						"type" : "string",
+						"pattern" : "^[a-zA-Z_][a-zA-Z0-9_]*$"
+					}
+				},
+				"port_values" : {
+					"type" : "array",
+					"items" : {
+						"oneOf" : [
+							{
+								"type" : "number"
+							},
+							{
+								"type" : "null"
+							}
+						]
+					}
+				},
+				"port_types" : {
+					"type" : "array",
+					"items" : {
+						"type" : "string",
+						"enum" : ["design_variable", "result_variable", "intermediate_variable"]
+					}
+				},
+				"coefficient_keys" : {
+					"type" : "array",
+					"items" : {
+						"type" : "string",
+						"pattern" : "^[a-zA-Z_][a-zA-Z0-9_]*$"
+					}
+				},
+				"coefficient_values" : {
+					"type" : "array",
+					"items" : {
+						"type" : "number"
+					}
+				},
+				"data_generator_method_name" : {
+					"type" : "string"
+				},
+				"data_generator_type_name" : {
+					"type" : "string"
+				},
+				"required" : [
+					"port_keys", 
+					"port_values", 
+					"port_types",
+					"coefficient_keys",
+					"coefficient_values",
+					"data_generator_method_name",
+					"data_generator_type_name"
+				]
+			}
+		}
+	},
+	"required" : ["dumping_time", "dumping_data"]
+}

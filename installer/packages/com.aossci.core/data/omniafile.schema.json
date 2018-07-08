@@ -1,0 +1,110 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions" : {
+		"def_tree_node" : {
+			"type" : "object",
+			"properties" : {
+				"id" : {
+					"type" : "string",
+					"pattern" : "^[a-zA-Z_][a-zA-Z0-9_]*$"
+				},
+				"children" : {
+					"type" : "array",
+					"items" : {
+						"$ref" : "#/definitions/def_tree_node"
+					}
+				},
+				"required" : ["id", "children"]
+			}
+		}
+	},
+	"type" : "object",
+	"properties" : {
+		"common" : {
+			"type" : "object",
+			"properties" : {
+				"case_id" : {
+					"type" : "string",
+					"pattern" : "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[89aAbB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}"
+				},
+				"running_type" : {
+					"type" : "string",
+					"enum" : ["local_sequential", "local_concurrent", "cluster_parallel"]
+				},
+				"project_general_settings" : {
+					"type" : "object",
+					"properties" : {
+						"recycle_policy" : {
+							"type" : "integer", 
+							"enum" : [0,1,2]
+						},
+						"simcode_sampling_runner_manager_settings" : {
+							"type" : "object",
+							"properties" : {
+								"maximum_simcode_processes" : {
+									"type" : "integer"
+								},
+								"process_start_intervals" : {
+									"type" : "integer"
+								}
+							},
+							"required" : ["maximum_simcode_processes", "process_start_intervals"]
+						}
+					},
+					"required" : ["recycle_policy"]
+				}
+			},
+			"required" : ["case_id", "running_type"]
+		},
+		"tree" : {
+			"$ref" : "#/definitions/def_tree_node",
+			"maxProperties" : 1
+		},
+		"node_data" : {
+			"type" : "array",
+			"minItems": 1,
+			"items" : {
+				"type" : "object",
+				"properties" : {
+					"id" : {
+						"type" : "string",
+						"pattern" : "^[a-zA-Z_][a-zA-Z0-9_]*$"
+					},
+					"type" : {
+						"type" : "string",
+						"enum" : ["root", "process"]
+					},
+					"data" : {
+						"type" : "object"
+					},
+					"data_properties" : {
+						"type" : "array",
+						"items" : {
+							"type" : "object",
+							"properties" : {
+								"Type" : {"type" : "string"},
+								"Option" : {"type" : "string"}
+							},
+							"required" : ["Type", "Option"]
+						}
+					},
+					"uid" : {
+						"type" : "string",
+						"pattern" : "^[a-zA-Z0-9]{12}$"
+					}
+				},
+				"required" : ["id", "type", "data", "data_properties", "uid"]
+			}
+		},
+		"extension" : {
+			"type" : "object",
+			"properties" : {
+				"activated" : {
+					"type" : "boolean"
+				}
+			},
+			"required" : ["activated"]
+		}
+	},
+	"required" : ["common","tree", "node_data", "extension"]
+}

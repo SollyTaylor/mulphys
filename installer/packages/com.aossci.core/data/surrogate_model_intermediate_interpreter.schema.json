@@ -1,0 +1,19 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type" : "object",
+	"definitions" : {
+		"def_accuracies" : {
+			"type" : "array",
+			"items" : {
+				"type" : "number"
+			},
+			"minItems" : 1
+		}
+	},
+	"properties" : {
+		"Accuracies" : {
+			"$ref" : "#/definitions/def_accuracies"
+		}
+	},
+	"required" : ["Accuracies"]
+}

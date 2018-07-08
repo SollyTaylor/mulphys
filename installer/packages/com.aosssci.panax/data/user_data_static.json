@@ -1,0 +1,26 @@
+{
+    "banner" : {
+    	"type" : "Roman@http://patorjk.com/software/taag/#p=testall&h=0&f=Big%20Money-se&t=Strux",
+    	"content" : [
+			"    ",
+            "    ",
+            "    ..oooooo..o..........................................",
+			"    d8P'....`Y8....o8....................................",
+			"    Y88bo........o888oo.oooo.d8b.oooo..oooo..oooo....ooo.",
+			"    .``Y8888o.....888...`888``8P.`888..`888...`88b..8P'..",
+			"    .....``Y88b...888....888......888...888.....Y888'....",
+			"    oo......d8P...888....888......888...888....o8`'88b...",
+			"    8``88888P'....`888`.d888b.....`V88V`V8P'.o88'...888o.",
+            "    ",
+            "    "
+    	]
+    },
+    "CorporationInfo" : {
+        "CopyrightYear" : "2017",
+        "CompanyName" : "Anail Inc."
+    },
+    "softwareInfo" : {
+        "Name" : "Strux",
+        "Brief" : "A logical structure builder specifically for Reliability Analysis."
+    }
+}

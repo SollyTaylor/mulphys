@@ -1,0 +1,43 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type" : "object",
+	"properties" : {
+		"dumping_time" : {
+			"type" : "string"
+		},
+		"dumping_data" : {
+			"type" : "object",
+			"properties" : {
+				"data_generator_type_name" : {
+					"type" : "string"
+				},
+				"data_generator_method_name" : {
+					"type" : "string"
+				},
+				"data" :{
+					"type" : "array",
+					"items" : {
+						"type" : "object",
+						"properties" : {
+							"name" : {"type" : "string"},
+							"type" : {"type" : "integer"},
+							"values" : {
+								"type" : "array",
+								"items" : {
+									"type" : "number"
+								}
+							}
+						},
+						"required" : ["name", "type", "values"]
+					}
+				}
+			},
+			"required" : [
+				"data_generator_type_name", 
+				"data_generator_method_name", 
+				"data"
+			]
+		}
+	},
+	"required" : ["dumping_time", "dumping_data"]
+}

@@ -1,0 +1,39 @@
+{
+	"DataDictionary" : [
+		{
+			"key" : "EngineeringType",
+			"alias" : "",
+			"values" : ["Structure", "Mechanism"]
+		},
+		{
+			"key" : "ProductBatchNumber",
+			"alias" : "",
+			"values" :["Scheme", "Preliminary Prototype", "Experimental Prototype"]
+		},
+		{
+			"key" : "EnvironmentType",
+			"alias" : "",
+			"values" : ["Storage", "in-field", "Criusing"]
+		},
+		{
+			"key": "RiskFactor",
+			"alias" : "",
+			"values" : ["A", "B", "C", "D", "E"]
+		},
+		{
+			"key" : "RiskProbability",
+			"alias" : "",
+			"values" : ["A", "B", "C", "D", "E"]
+		},
+		{
+			"key" : "FactorType",
+			"alias" : "",
+			"values" : ["Dimension", "Material", "Friction Factor"]
+		},
+		{
+			"key" : "ProcessingType",
+			"alias" : "",
+			"values" : ["Lathing", "Milling", "Planing", "Grindering"]
+		}
+	]
+}

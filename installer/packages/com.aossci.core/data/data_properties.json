@@ -1,0 +1,81 @@
+{
+    "DataProperties": [
+        {
+            "Alias": "工程类型",
+            "Default": 2,
+            "Options": [
+                "结构",
+                "机构",
+                "组件"
+            ],
+            "Type": "EngineeringType"
+        },
+        {
+            "Alias": "产品批号",
+            "Default": 0,
+            "Options": [
+                "方案初步原型",
+                "实验原型"
+            ],
+            "Type": "ProductBatchNumber"
+        },
+        {
+            "Alias": "环境类型",
+            "Default": 0,
+            "Options": [
+                "存储",
+                "驻场",
+                "巡航"
+            ],
+            "Type": "EnvironmentType"
+        },
+        {
+            "Alias": "风险因素等级",
+            "Default": 0,
+            "Options": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E"
+            ],
+            "Type": "RiskFactor"
+        },
+        {
+            "Alias": "风险概率",
+            "Default": 0,
+            "Options": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E"
+            ],
+            "Type": "RiskProbability"
+        },
+        {
+            "Alias": "因素类型",
+            "Default": 0,
+            "Options": [
+                "天气",
+                "尺寸",
+                "材料",
+                "摩擦",
+                "人为"
+            ],
+            "Type": "FactorType"
+        },
+        {
+            "Alias": "加工类型",
+            "Default": 0,
+            "Options": [
+                "车",
+                "磨",
+                "铇",
+                "铣",
+                "切"
+            ],
+            "Type": "ProcessingType"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+	"#schema" : "http://json-schema.org/draft-04/#",
+	"type" : "object",
+	"properties" : {
+		"root" : {
+			"type" : "array",
+			"items" : {
+				"type" : "object",
+				"properties" : {
+					"name" : {
+						"type" : "string",
+						"enum" : ["Monte Carlo Sampling", "Reliability Technique", "DoE"]
+					},
+					"subplugins" : {
+						"type" : "array",
+						"items" : {
+							"type" : "string"
+						}
+					}
+				}
+			}
+		},
+		"process" : {
+			"type" : "array",
+			"items" : {
+				"type" : "string",
+				"enum" : ["SimCode", "PureCode"]
+			}
+		},
+		"distributions" : {
+			"type" : "array",
+			"items" : {
+				"type" : "string"
+			}
+		}
+	},
+	"required" : ["root", "process", "distributions"]
+}

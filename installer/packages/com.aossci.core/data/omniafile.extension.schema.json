@@ -1,0 +1,69 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions" : {
+		"def_time_var" : {
+			"type" : "string",
+			"pattern" :  "^$|^[Tt][a-zA-Z0-9_]+$"
+		},
+		"def_identifer" : {
+			"type" : "string",
+			"pattern" :  "^$|^[a-zA-Z][a-zA-Z0-9_]+$"
+		}
+	},
+	"type" : "object",
+	"properties" : {
+		"time" : {
+			"type" : "object",
+			"properties" : {
+				"variable" : {"$ref" : "#/definitions/def_time_var"},
+				"t_0" : {"type" : "number", "minimum" : 0.0},
+				"t_end" : {"type" : "number" , "minimum" : 0.0},
+				"t_count" : {"type" : "integer" , "minimum" : 1}
+			},
+			"required" : ["variable", "t_0", "t_end", "t_count"]
+		},
+		"random_coefficients" : {
+			"type" : "array",
+			"items" : {
+				"type" : "object",
+				"properties" : {
+					"coefficient" : {
+						"type" : "string",
+						"pattern" : "^[a-zA-Z][a-zA-Z0-9_]*$"
+					},
+					"settings" : {
+						"type" : "object",
+						"properties" : {
+							"Distribution" : {"type" : "string"}
+						},
+						"required" : ["Distribution"]
+					}
+				},
+				"required" : ["coefficient", "settings"]
+			}
+		},
+		"evolutionary_functions" : {
+			"type" : "array",
+			"items" : {
+				"type" : "object",
+				"properties" : {
+					"variable" : {
+						"type" : "string",
+						"pattern" : "^[a-zA-Z][a-zA-Z0-9_]*$"
+					},
+					"functions" : {
+						"type" : "array",
+						"items" : {
+							"type" : "string"
+						}
+					}
+				},
+				"required" : ["variable", "functions"]
+			}
+		},
+		"activated" : {
+			"type" : "boolean"
+		}
+	},
+	"required" : ["time", "random_coefficients", "evolutionary_functions", "activated"]
+}

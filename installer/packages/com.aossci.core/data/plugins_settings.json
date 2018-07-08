@@ -1,0 +1,33 @@
+{
+	"root" : [
+		{
+			"name" : "Monte Carlo Sampling",
+			"subplugins" : [
+				"Simple Random Sampling"
+			]
+		},
+		{
+			"name" : "Reliability Technique",
+			"subplugins" : [
+				"FORM",
+				"SORM"
+			]
+		},
+		{
+			"name" : "DoE",
+			"subplugins" : [
+				"Full Factorial",
+				"Optimal Latin Hypercube"
+			]
+		}
+	],
+	"process" : [
+		"SimCode",
+		"PureCode"
+	],
+	"distributions" : [
+		"Normal",
+		"Uniform",
+		"Trivial"
+	]
+}

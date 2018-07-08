@@ -1,0 +1,29 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type" : "object",
+	"properties" : {
+		"name" : {
+			"type" : "string"
+		},
+		"global_vars" : {
+			"type" : "array",
+			"items" : {}
+		},
+		"local_vars" : {
+			"type" : "object",
+			"properties" : {
+				"inputs" : {
+					"type" : "array"
+				},
+				"outputs" : {
+					"type" : "array"
+				},
+				"local_code" : {
+					"type" : "array"
+				}
+			},
+			"required" : ["inputs", "outputs", "local_code"]
+		}
+	},
+	"required" : ["name", "global_vars", "local_vars"]
+}

@@ -1,0 +1,36 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type" : "object",
+	"properties" : {
+		"common" : {
+			"type" : "object",
+			"properties" : {
+				"id" : {
+					"type" : "string",
+					"pattern" : "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[89aAbB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}"
+				}
+			}
+		},
+		"configurations" : {
+			"type" : "object",
+			"properties" : {
+				"assembly_settings" : {
+					"type" : "object",
+					"properties" : {
+						"name" : {"type" : "string"},
+						"prefix" : {"type" : "string"},
+						"drop_results_after_run" : {"type" : "boolean"},
+						"main_analyzer" : {"type" : "string"}
+					}
+				}
+			}
+		},
+		"tree" : {
+			"type" : "object"
+		},
+		"node_data" : {
+			"type" : "object"
+		}
+	},
+	"required" : ["common", "configurations", "tree", "node_data"]
+}

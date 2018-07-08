@@ -1,0 +1,31 @@
+{
+	"current_tree_index" : 0,
+	"strux_trees" : [
+		{
+			"common" : {
+				"id" : ""
+			},
+			"configurations" : {},
+			"tree" : {
+				"dummy_root" : {}
+			},
+			"node_data" : {
+				"dummy_root" : {
+					"NodeInformation" : {
+						"Alias" : "<unaliased>"
+					},
+					"Attachments" : {
+						"values" : ["Structure", "Scheme", "Storage", "A", "A", "Dimension", "Lathing", "normal distribution"]
+					},
+					"ReliabilitySettings" : {
+						"Method" : "UserAssignedReliability",
+						"FailureProbability" : 0.0,
+						"ReliabilityModel" : ["", ""],
+						"DependentIdentifers" : ["","failprob := 0.0"],
+						"RelatedRelianaProjectName" : ""
+					}
+				}
+			}
+		}
+	]
+}

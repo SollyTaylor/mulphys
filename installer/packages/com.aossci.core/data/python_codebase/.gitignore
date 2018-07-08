@@ -1,0 +1,11 @@
+
+
+__pycache__/
+build/
+dist/
+
+*.spec
+*.json
+
+!surrogate_model_input.json
+!.gitignore
