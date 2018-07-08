@@ -41,7 +41,7 @@ processes
 * file -> reader -> geometry
 * geometry -> writer -> file
 * geometry [, field, environment]   -> solver -> field
-* field (init, bc) -> dynamics -> field
+* field (init) -> dynamics -> field
 
 runner
 
@@ -52,12 +52,19 @@ runner
 simulation
 
 * runner1 -> runner2 -> ... ->runnerN
+* schedulor
 
 
 
-1. 以上每一个对象都需要dump出来，查看其中的详细信息
+1. 以上每一个对象都需要dump出来，查看其中的详细信息, panax dump <object-name>
 2. solver不关心变量名称，只关心（1）场变量类型、（2）转换方式是格心格点插值积分、（3）输入输出几何
-3. ​
+3. 不考虑边值问题，只考虑初值问题
+
+
+
+主要解决航空航天模型仿真的问题
+
+需要精心梳理和配置每种对象的特性
 
 
 
