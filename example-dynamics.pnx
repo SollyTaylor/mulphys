@@ -1,0 +1,24 @@
+path p1 = "D:/xxxx.cgns";
+reader r1 = new reader("cgns");
+geometry g1 = r1.read(p1);
+
+solver driver = new solver("solverName1");
+solver extension = new solver("solverName2");
+integrator integrator = new integrator("i1");
+// s0, initial state
+// c, configurations
+field s0 = new field();
+configurations c = {};
+state s = new state("x", s0, c);
+
+configurations config = {};
+dynamics d1 = new dynamics(g1, driver, extension, integrator, s, config);
+configurations c1 = {};
+reporter rpt1 = new reporter("someReporter", c1);
+d1.run(reporter);
+
+dump(driver);
+dump(extension);
+dump(integrator);
+dump(r1);
+dump(w1);

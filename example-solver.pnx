@@ -1,0 +1,6 @@
+path p1 = "D:/xxxx.cgns";
+reader r1 = new reader("cgns");
+geometry g1 = r1.read(p1);
+
+solver s1 = new solver("solverName");
+geometricalField gf1 = s1.solve(g1);
