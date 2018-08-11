@@ -3,6 +3,7 @@
 
 #include "Common.h"
 #include "ComponentBase.h"
+#include "GeometricalField.h"
 
 namespace pnx {
 
@@ -10,11 +11,10 @@ class ReaderBase : public ComponentBase
 {
     Q_OBJECT
 public:
-    explicit ReaderBase(QObject* parent);
+    explicit ReaderBase(const QString& module_name, QObject* parent);
 
-signals:
+    virtual pnx::GeometricalField *read(const QString& geometry_file_path) = 0;
 
-public slots:
 };
 
 

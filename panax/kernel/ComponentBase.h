@@ -10,7 +10,13 @@ class ComponentBase : public QObject
 {
     Q_OBJECT
 public:
-    explicit ComponentBase(QObject *parent = nullptr);
+    explicit ComponentBase(const QString& module_name, QObject *parent = nullptr);
+    virtual ~ComponentBase() {}
+
+    QString module_name() const;
+
+private:
+    QString module_name_;
 };
 
 };

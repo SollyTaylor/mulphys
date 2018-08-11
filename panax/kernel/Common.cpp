@@ -61,7 +61,7 @@ QString pnx::Common::get_root_dir(const AppName app_name)
     {
     case AppNamePanax:
     {
-        return get_app_root("STRUX");
+        return get_app_root("PANAX");
     }
     default:
     {
@@ -71,4 +71,54 @@ QString pnx::Common::get_root_dir(const AppName app_name)
         THROW_PNXEXCEPTION_INFO(err.toStdString());
     }
     }
+}
+
+bool pnx::Common::is_debug_build()
+{
+    bool load_debug = true;
+#if  defined( QT_DEBUG )
+    load_debug = true;
+#else
+    load_debug = false;
+#endif
+    return load_debug;
+}
+
+const QString pnx::Common::get_plugin_dir()
+{
+//    QString plugin_dir;
+//    if (is_debug_build())
+//    {
+//        plugin_dir = get_root_dir(AppNamePanax) + "/components/Debug";
+//    }
+//    else
+//    {
+//        plugin_dir = get_installer_package_subdir("omnia") + "/data/plugins";
+//    }
+//    return plugin_dir;
+    return pnx::Common::get_root_dir(AppNamePanax) + "/components/Debug";
+}
+
+const QString pnx::Common::get_plugin_path(const QString &module_name)
+{
+    const QString plugin_dir = get_plugin_dir();
+#if defined(Q_OS_WIN64) || defined(Q_OS_WIN32)
+    QString module_file_path = plugin_dir + "/" + module_name + ".dll";
+#elif defined(Q_OS_MAC) // for linux and mac use unsigned __int64
+    QString module_file_path = omnia_dir + "/lib" + module_name + ".dylib";
+#elif defined(Q_OS_LINUX)
+    QString module_file_path = omnia_dir + "/lib" + module_name + ".so";
+#else
+#error Not one of WIN32,Win64,MACOSX,LINUX platform is used currently.
+#endif
+    QFileInfo qf(module_file_path);
+    if (!qf.exists() || !qf.isFile())
+    {
+        QString err;
+        QTextStream ss(&err);
+        ss << QObject::tr("The module file path ")
+           << module_file_path << QObject::tr(" does not exist.");
+        THROW_PNXEXCEPTION_INFO(err.toStdString());
+    }
+    return module_file_path;
 }
