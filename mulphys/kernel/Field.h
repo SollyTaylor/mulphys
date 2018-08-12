@@ -3,15 +3,9 @@
 
 #include <QObject>
 #include "Common.h"
+#include "FieldTraits.h"
 
 namespace mphs {
-
-enum FieldLocation {
-    INTEGRAL,
-    VERTEX_CENTERED,
-    FACE_CENTERED,
-    CELL_CENTERED
-};
 
 class Field : public QObject
 {
@@ -20,15 +14,20 @@ public:
     explicit Field(QObject* parent);
 
 private:
-    // field properties
-    QString field_name_;
-    FieldLocation field_location_;
+
+    FieldTraits* field_traits_;
 
 private:
-    // field data
-    arma::mat data;
-    arma::imat idata;
-    arma::umat udata;
+
+    double scalar_;
+
+    arma::vec   vData_;
+    arma::ivec  ivData_;
+    arma::uvec  uvData_;
+
+    arma::mat   mData_;
+    arma::imat imData_;
+    arma::umat umData_;
 
 };
 

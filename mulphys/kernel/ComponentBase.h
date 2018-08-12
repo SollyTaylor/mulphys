@@ -15,8 +15,24 @@ public:
 
     QString module_name() const;
 
+    QString config_json_path() const;
+
+    QJsonObject config_default_obj() const;
+
+    QJsonObject config_schema_obj() const;
+
+    QJsonObject config_obj() const;
+
 private:
     QString module_name_;
+
+    QString config_json_path_;
+
+    QJsonObject config_default_obj_;
+    QJsonObject config_schema_obj_;
+    QJsonObject config_obj_;
+
+
 };
 
 };

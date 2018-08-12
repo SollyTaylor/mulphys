@@ -5,8 +5,26 @@
 #include <QFileInfo>
 #include <QDebug>
 #include <QPluginLoader>
-#include <QMap>
 
+// containers
+#include <QMap>
+#include <QList>
+
+// Json related data
+#include <QJsonObject>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonValue>
+#include <QJsonParseError>
+
+#include "rapidjson/filereadstream.h"
+#include "rapidjson/document.h"
+#include "rapidjson/schema.h"
+#include "rapidjson/stringbuffer.h"
+#include "rapidjson/error/en.h"
+
+// IO
+#include <QFile>
 #include <iostream>
 #include <sstream>
 
@@ -18,7 +36,44 @@
 #define NOEXCEPT
 #endif
 
+typedef QMap<QString, QList<quint8>> SectionIndices;
+
+typedef QString FieldKey; // i.e.: processor:variable
+
 namespace mphs {
+
+enum FieldLocation {
+    UndefinedLocation = 0,
+    REDUCED,
+    VERTEX_MAPPED,
+    FACE_MAPPED,
+    CELL_MAPPED
+};
+
+enum FieldDataType {
+    UndefinedDataType = 0,
+    Scalar,
+    DoubleVector,
+    IntVector,
+    UintVector,
+    DoubleMatrix,
+    IntMatrix,
+    UintMatrix
+};
+
+enum FieldIOType {
+    UndefinedIOType = 0,
+    State,  // in processor
+    Input,  // in processor
+    Output, // in processor
+    InputOutput // in geometrical field
+};
+
+
+
+
+
+
 
 class mphsExceptions: public std::exception{
 public:
@@ -57,8 +112,6 @@ protected:
 }
 
 
-
-
 class Common
 {
 public:
@@ -77,7 +130,30 @@ public:
 
     static bool is_debug_build();
 
+    ///
+    /// json related static functions
+    ///
+    static QJsonDocument read_json_file(const QString& path);
+    static QJsonObject read_json_file_object(const QString& path);
+    static void write_json_file_object(const QString& path, QJsonObject obj);
+    static void check_json_schema(const QJsonDocument& json,
+                                  const QJsonDocument& jsonSchema);
 
+    static void check_json_schema(const QJsonObject& json,
+                                  const QJsonObject& jsonSchema);
+
+    static void check_json_schema(const QJsonArray& json,
+                                  const QJsonObject& jsonSchema);
+
+    static void check_json_schema(const QString& json,
+                                  const QString& jsonSchema);
+
+private:
+    static void check_json_schema(const std::string& json,
+                                  const std::string& jsonSchema);
+public:
+    ///
+    ///
     ///
     /// plugin related static functions
     ///
@@ -86,6 +162,8 @@ public:
 
     static const QString get_plugin_dir();
     static const QString get_plugin_path(const QString& module_name);
+    static const QString get_plugin_json_path(const QString& module_name);
+    static void check_is_json_object(const QJsonObject& jv, const QString& key = "");
 
     template<typename InterfaceType, typename BaseType>
     static BaseType* get(const QString& plugin_name, QObject* parent) {

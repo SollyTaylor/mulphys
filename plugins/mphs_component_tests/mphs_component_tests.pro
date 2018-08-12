@@ -7,6 +7,7 @@ TEMPLATE = app
 
 include($$(MULPHYS_ROOT)/projects/mulphys.pri)
 include($$(MULPHYS_ROOT)/projects/armadillo.pri)
+include($$(MULPHYS_ROOT)/projects/rapidjson.pri)
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings

@@ -1,0 +1,30 @@
+{
+  "config": {
+    "field_traits": [
+      {
+        "name": "x",
+        "description": "dummy input description",
+        "location": "reduced",
+        "data_type": "scalar",
+        "ioType": "input",
+        "initialValue": [
+          [
+            0.0
+          ]
+        ]
+      },
+      {
+        "name": "y",
+        "description": "dummy output description",
+        "location": "reduced",
+        "data_type": "scalar",
+        "ioType": "output",
+        "initialValue": [
+          [
+            0.0
+          ]
+        ]
+      }
+    ]
+  }
+}

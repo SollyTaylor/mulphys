@@ -14,19 +14,27 @@ CONFIG -= app_bundle
 DEFINES += QT_DEPRECATED_WARNINGS
 
 include($$(MULPHYS_ROOT)/projects/armadillo.pri)
+include($$(MULPHYS_ROOT)/projects/rapidjson.pri)
 
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += main.cpp \
+SOURCES += \
     ComponentBase.cpp \
     Common.cpp \
     ReaderBase.cpp \
     Reader.cpp \
     GeometricalField.cpp \
-    Field.cpp
+    Field.cpp \
+    Processor.cpp \
+    FieldTraits.cpp \
+    Configurator.cpp \
+    ProcessorBase.cpp \
+    ProcessorComposer.cpp \
+    Integrator.cpp \
+    IntegratorBase.cpp
 
 HEADERS += \
     ComponentBase.h \
@@ -35,7 +43,16 @@ HEADERS += \
     Reader.h \
     ReaderInterface.h \
     GeometricalField.h \
-    Field.h
+    Field.h \
+    Processor.h \
+    ProcessorInterface.h \
+    ProcessorBase.h \
+    FieldTraits.h \
+    Configurator.h \
+    ProcessorComposer.h \
+    Integrator.h \
+    IntegratorBase.h \
+    IntegratorInterface.h
 
 win32: {
     TARGET = mulphys_kernel_win_x64
