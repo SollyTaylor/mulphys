@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QObject* obj = new QObject();
 
     {
-        pnx::ReaderBase* rb = pnx::Reader::get("pnx_reader_stl",obj);
+        mphs::ReaderBase* rb = mphs::Reader::get("mphs_reader_stl",obj);
         qDebug() << rb->module_name();
     }
 

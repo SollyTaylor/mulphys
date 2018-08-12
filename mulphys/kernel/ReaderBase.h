@@ -5,7 +5,7 @@
 #include "ComponentBase.h"
 #include "GeometricalField.h"
 
-namespace pnx {
+namespace mphs {
 
 class ReaderBase : public ComponentBase
 {
@@ -13,7 +13,7 @@ class ReaderBase : public ComponentBase
 public:
     explicit ReaderBase(const QString& module_name, QObject* parent);
 
-    virtual pnx::GeometricalField *read(const QString& geometry_file_path) = 0;
+    virtual mphs::GeometricalField *read(const QString& geometry_file_path) = 0;
 
 };
 

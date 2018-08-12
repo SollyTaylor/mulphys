@@ -4,7 +4,7 @@
 #include "Common.h"
 #include "Field.h"
 
-namespace pnx {
+namespace mphs {
 class GeometricalField : public QObject
 {
     Q_OBJECT
@@ -13,7 +13,7 @@ public:
 
 private:
 
-    QMap<QString, pnx::Field*> fields_;
+    QMap<QString, mphs::Field*> fields_;
 
 };
 }

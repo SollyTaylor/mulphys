@@ -1,6 +1,6 @@
 #include "Reader.h"
 
-pnx::ReaderBase *pnx::Reader::get(const QString &reader_name, QObject *parent)
+mphs::ReaderBase *mphs::Reader::get(const QString &reader_name, QObject *parent)
 {
-    return pnx::Common::get<pnx::ReaderInterface, pnx::ReaderBase>(reader_name, parent);
+    return mphs::Common::get<mphs::ReaderInterface, mphs::ReaderBase>(reader_name, parent);
 }

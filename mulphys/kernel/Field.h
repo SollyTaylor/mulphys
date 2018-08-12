@@ -4,7 +4,7 @@
 #include <QObject>
 #include "Common.h"
 
-namespace pnx {
+namespace mphs {
 
 enum FieldLocation {
     INTEGRAL,
@@ -27,6 +27,8 @@ private:
 private:
     // field data
     arma::mat data;
+    arma::imat idata;
+    arma::umat udata;
 
 };
 

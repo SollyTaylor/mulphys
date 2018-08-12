@@ -4,15 +4,15 @@
 #include "Common.h"
 #include "ReaderBase.h"
 
-namespace pnx {
+namespace mphs {
 
 class ReaderInterface {
 public:
-    virtual pnx::ReaderBase* create_plugin(QObject* parent) = 0;
+    virtual mphs::ReaderBase* create_plugin(QObject* parent) = 0;
     virtual ~ReaderInterface(){}
 };
 }
 
-Q_DECLARE_INTERFACE(pnx::ReaderInterface, "pnx.reader.interface")
+Q_DECLARE_INTERFACE(mphs::ReaderInterface, "mphs.reader.interface")
 
 #endif // READERINTERFACE_H

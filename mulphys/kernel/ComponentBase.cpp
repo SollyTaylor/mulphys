@@ -1,6 +1,6 @@
 #include "ComponentBase.h"
 
-pnx::ComponentBase::ComponentBase(const QString &module_name,
+mphs::ComponentBase::ComponentBase(const QString &module_name,
                                   QObject *parent)
     : QObject(parent)
     , module_name_(module_name)
@@ -8,7 +8,7 @@ pnx::ComponentBase::ComponentBase(const QString &module_name,
 
 }
 
-QString pnx::ComponentBase::module_name() const
+QString mphs::ComponentBase::module_name() const
 {
     return module_name_;
 }

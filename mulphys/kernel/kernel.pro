@@ -13,7 +13,7 @@ CONFIG -= app_bundle
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
 
-include($$(PANAX_ROOT)/projects/armadillo.pri)
+include($$(MULPHYS_ROOT)/projects/armadillo.pri)
 
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -38,11 +38,11 @@ HEADERS += \
     Field.h
 
 win32: {
-    TARGET = panax_kernel_win_x64
+    TARGET = mulphys_kernel_win_x64
 }
 
-CONFIG(release, debug|release): DESTDIR = $$(PANAX_ROOT)/lib/Release
-CONFIG(debug, debug|release): DESTDIR = $$(PANAX_ROOT)/lib/Debug
+CONFIG(release, debug|release): DESTDIR = $$(MULPHYS_ROOT)/lib/Release
+CONFIG(debug, debug|release): DESTDIR = $$(MULPHYS_ROOT)/lib/Debug
 
 win32 :{
     target.path = $$DESTDIR

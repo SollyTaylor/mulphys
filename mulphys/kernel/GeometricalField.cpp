@@ -1,6 +1,6 @@
 #include "GeometricalField.h"
 
-pnx::GeometricalField::GeometricalField(QObject *parent)
+mphs::GeometricalField::GeometricalField(QObject *parent)
     : QObject(parent)
 {
 

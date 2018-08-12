@@ -1,6 +1,6 @@
 #include "Field.h"
 
-pnx::Field::Field(QObject *parent)
+mphs::Field::Field(QObject *parent)
     : QObject(parent)
 {
 

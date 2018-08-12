@@ -18,12 +18,12 @@
 #define NOEXCEPT
 #endif
 
-namespace pnx {
+namespace mphs {
 
-class pnxExceptions: public std::exception{
+class mphsExceptions: public std::exception{
 public:
 
-    explicit pnxExceptions(const std::string& message,
+    explicit mphsExceptions(const std::string& message,
                           const int line_number,
                           const std::string& function,
                           const std::string& file_name)
@@ -44,15 +44,15 @@ public:
      *
      *
      */
-    virtual ~pnxExceptions(){}
+    virtual ~mphsExceptions(){}
 
 protected:
     std::string msg_;
 };
 
-#define THROW_PNXEXCEPTION_INFO(INFO)    \
+#define THROW_MPHSEXCEPTION_INFO(INFO)    \
 { \
-    pnx::pnxExceptions excep(INFO, __LINE__, __FUNCTION__, __FILE__); \
+    mphs::mphsExceptions excep(INFO, __LINE__, __FUNCTION__, __FILE__); \
     throw excep;\
 }
 
@@ -64,7 +64,7 @@ class Common
 public:
 
     enum AppName {
-        AppNamePanax
+        AppNameMulphys
     };
 
     Common(){}
@@ -90,7 +90,7 @@ public:
     template<typename InterfaceType, typename BaseType>
     static BaseType* get(const QString& plugin_name, QObject* parent) {
 
-        const QString plugin_path = pnx::Common::get_plugin_path(plugin_name);
+        const QString plugin_path = mphs::Common::get_plugin_path(plugin_name);
         QFileInfo qfi(plugin_path);
         if (qfi.exists() && qfi.isFile())
         {
@@ -109,7 +109,7 @@ public:
                     QString err;
                     QTextStream ss(&err);
                     ss <<  "Not a plugin: "<< loader.errorString();
-                    THROW_PNXEXCEPTION_INFO(err.toStdString());
+                    THROW_MPHSEXCEPTION_INFO(err.toStdString());
                 }
             }
             else
@@ -125,7 +125,7 @@ public:
                    << QObject::tr(" (4) You can also set QT_DEBUG_PLUGINS=1 in the launch environment of the application to get more verbose debugging information about plugin loading.") << endl
                    << QObject::tr(" (5) If the caller used an old version of Qt dll/so/dynlib's (e.g. QtCore.dll, QtWidget) of old versions usually after an old Qt deployment, delete the old deployment and retry.") << endl
                    ;
-                THROW_PNXEXCEPTION_INFO(err.toStdString());
+                THROW_MPHSEXCEPTION_INFO(err.toStdString());
             }
         }
         else
@@ -136,7 +136,7 @@ public:
             ss << QObject::tr(" Representative problems:\n")
                << QObject::tr(" (1) The plugin is not registered before its dependant, the related plugin should be registered mannually if necessary. \n")
                << QObject::tr(" (2) The plugin is not generated before use, the user should make sure the proper built type (debug/release) is chosen.\n");
-            THROW_PNXEXCEPTION_INFO(err.toStdString());
+            THROW_MPHSEXCEPTION_INFO(err.toStdString());
         }
     }
 

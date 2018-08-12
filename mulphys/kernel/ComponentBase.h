@@ -4,7 +4,7 @@
 #include <QObject>
 #include "Common.h"
 
-namespace pnx {
+namespace mphs {
 
 class ComponentBase : public QObject
 {

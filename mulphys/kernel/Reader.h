@@ -6,12 +6,12 @@
 #include "ReaderBase.h"
 #include "ReaderInterface.h"
 
-namespace pnx {
+namespace mphs {
 
 class Reader
 {
 public:
-    static pnx::ReaderBase* get(const QString& reader_name, QObject* parent);
+    static mphs::ReaderBase* get(const QString& reader_name, QObject* parent);
 };
 
 }

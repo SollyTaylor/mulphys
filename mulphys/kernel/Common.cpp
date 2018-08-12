@@ -1,6 +1,6 @@
 #include "Common.h"
 
-void pnx::Common::print_info(const QString &info, const bool isEndl)
+void mphs::Common::print_info(const QString &info, const bool isEndl)
 {
     qDebug() << info;
     if (isEndl) {
@@ -8,7 +8,7 @@ void pnx::Common::print_info(const QString &info, const bool isEndl)
     }
 }
 
-QString pnx::Common::get_plugin_name_from_path(const QString &path, bool is_debug)
+QString mphs::Common::get_plugin_name_from_path(const QString &path, bool is_debug)
 {
     QString qpath(path);
     QFile f(qpath);
@@ -29,7 +29,7 @@ QString pnx::Common::get_plugin_name_from_path(const QString &path, bool is_debu
     return filename;
 }
 
-QString pnx::Common::get_root_dir(const AppName app_name)
+QString mphs::Common::get_root_dir(const AppName app_name)
 {
     auto get_app_root = [](const QString& app_name)
     {
@@ -53,27 +53,27 @@ QString pnx::Common::get_root_dir(const AppName app_name)
             QString err;
             QTextStream ss(&err);
             ss << QObject::tr("The installation path is corrupted: ") << root_dir;
-            THROW_PNXEXCEPTION_INFO(err.toStdString());
+            THROW_MPHSEXCEPTION_INFO(err.toStdString());
         }
     };
 
     switch(app_name)
     {
-    case AppNamePanax:
+    case AppNameMulphys:
     {
-        return get_app_root("PANAX");
+        return get_app_root("MULPHYS");
     }
     default:
     {
         QString err;
         QTextStream ss(&err);
         ss << QObject::tr("The application name is not recognized ") << app_name;
-        THROW_PNXEXCEPTION_INFO(err.toStdString());
+        THROW_MPHSEXCEPTION_INFO(err.toStdString());
     }
     }
 }
 
-bool pnx::Common::is_debug_build()
+bool mphs::Common::is_debug_build()
 {
     bool load_debug = true;
 #if  defined( QT_DEBUG )
@@ -84,22 +84,22 @@ bool pnx::Common::is_debug_build()
     return load_debug;
 }
 
-const QString pnx::Common::get_plugin_dir()
+const QString mphs::Common::get_plugin_dir()
 {
 //    QString plugin_dir;
 //    if (is_debug_build())
 //    {
-//        plugin_dir = get_root_dir(AppNamePanax) + "/components/Debug";
+//        plugin_dir = get_root_dir(AppNameMulphys) + "/components/Debug";
 //    }
 //    else
 //    {
 //        plugin_dir = get_installer_package_subdir("omnia") + "/data/plugins";
 //    }
 //    return plugin_dir;
-    return pnx::Common::get_root_dir(AppNamePanax) + "/components/Debug";
+    return mphs::Common::get_root_dir(AppNameMulphys) + "/components/Debug";
 }
 
-const QString pnx::Common::get_plugin_path(const QString &module_name)
+const QString mphs::Common::get_plugin_path(const QString &module_name)
 {
     const QString plugin_dir = get_plugin_dir();
 #if defined(Q_OS_WIN64) || defined(Q_OS_WIN32)
@@ -118,7 +118,7 @@ const QString pnx::Common::get_plugin_path(const QString &module_name)
         QTextStream ss(&err);
         ss << QObject::tr("The module file path ")
            << module_file_path << QObject::tr(" does not exist.");
-        THROW_PNXEXCEPTION_INFO(err.toStdString());
+        THROW_MPHSEXCEPTION_INFO(err.toStdString());
     }
     return module_file_path;
 }

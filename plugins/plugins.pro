@@ -1,7 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    pnx_component_tests
+    mphs_component_tests
 
 SUBDIRS += \
-    pnx_reader_stl
+    mphs_reader_stl
