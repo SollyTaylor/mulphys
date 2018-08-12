@@ -1,4 +1,4 @@
-# Panax
+# Mulphys
 
 
 
@@ -9,7 +9,7 @@
 | 主体   | 输入1            | 输入2                    | 输出                    | 动作 |
 | ------ | ---------------- | ------------------------ | ----------------------- | ---- |
 | reader | reader名称字符串 | 各种类型几何文件所在路径 | panax的Json格式几何文件 | read |
-|        | cgns             | /path/to/xxxx.cgns       | xxx.geom.pnx            |      |
+|        | cgns             | /path/to/xxxx.cgns       | xxx.geom.mphs           |      |
 
 * 实例：
 
@@ -54,7 +54,7 @@ simulation
 ！！！！！！！！
 
 
-1. 以上每一个对象都需要dump出来，查看其中的详细信息, panax dump <object-name>
+1. 以上每一个对象都需要dump出来，查看其中的详细信息, mulphys dump <object-name>
 2. solver不关心变量名称，只关心（1）场变量类型和输入顺序、（2）转换方式是格心格点插值积分、（3）输入输出几何
 3. 不考虑边值问题，只考虑初值问题
 
@@ -93,12 +93,12 @@ simulation
 
 命令行
 
-- panax read foo.txt (根据后缀名决定读取器，如果有多个对应则提示用户显式制定读取器) 输出bar.pnxf文件
-- panax write bar.pnxf foo.plt
-- panax run foo.pnx (执行panax文件)
-- panax describe component_foo (输出component_foo组件的详细信息)
-- panax version
-- panax help
-- panax package (打包panax为一个独立的可执行包)
+- mphs read foo.txt (根据后缀名决定读取器，如果有多个对应则提示用户显式制定读取器) 输出bar.pnxf文件
+- mphs write bar.pnxf foo.plt
+- mphs run foo.pnx (执行panax文件)
+- mphs describe component_foo (输出component_foo组件的详细信息)
+- mphs version
+- mphs help
+- mphs package (打包panax为一个独立的可执行包)
 
 
