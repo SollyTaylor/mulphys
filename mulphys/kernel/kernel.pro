@@ -61,7 +61,7 @@ win32: {
 CONFIG(release, debug|release): DESTDIR = $$(MULPHYS_ROOT)/lib/Release
 CONFIG(debug, debug|release): DESTDIR = $$(MULPHYS_ROOT)/lib/Debug
 
-win32 :{
-    target.path = $$DESTDIR
-    INSTALLS += target
-}
+#win32 :{
+#    target.path = $$DESTDIR
+#    INSTALLS += target
+#}

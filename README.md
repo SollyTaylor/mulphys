@@ -49,12 +49,62 @@ Mulphys的基本定位是多物理场技术的工程软件。
 
 1. 在多场耦合求解器中，物理量的耦合发生在场处理器针对不同的变量求解的过程中的，场处理器是通过插件形式解耦开发的，让各个场处理器协作的物理量可以互相复用，必须要通过关键词的方式实现，而物理量的名称则不重要，重要的是物理量所要表达的物理含义才最重要。
 2. 那么如何在各个场处理器的开发中实现物理量的统一操作呢？mulphys通过让所有物理量在名称上采用共识变量（consensus）的方式实现——场处理器中互通的物理量都遵循统一的命名标准。
-3. 所有的场处理器可以操作的场都必须在“共识场变量名”集合中做了定义
-   - 场处理器所依赖的变量（dependents描述为processor:consensus）
-   - 将要操作的变量（states、inputs、outputs）都可以直接写成consensus
-4. ​
+3. 所有的场处理器的共识变量都需要在场处理器的配置文件中设定
+   - 场处理器所依赖的变量（dependents描述为[processor名]:[import名]:[alias名]）
+   - 将要操作的变量（states、inputs、outputs）都可以直接写成([consensus名])
+   - 共识变量包括有如下几类：常用几何量（e.g. vertices、vocc、faces、neighbors等）、常用物理量（e.g. pressure, temperature, alpha, beta, vinf, vmag等）、基本输入输出习惯变量（以x、y、z开头的变量，e.g. x, y, z, x0, xi, xn, y0, yi, yn, z0, zi, zn, ...）
+4. 共识变量大大降低了场编排器的配置过程，因为使用了共识变量，所以可以在场编排器的配置文件中制定这些参数的初始值，而不必复杂的指定所有相关场求解器的初始值等参数
 
-###模型功能特性
+共识变量表示意如下：
+
+```json
+{
+    "consensuses" : [
+        {
+            "name" : "var0",
+            "type" : "vec",
+            "location" : "vertex-mapped",
+            "description" : "var0 dummy description",
+            "sources" : ["foo1", "foo2"] //只存储变量可能由哪些场处理器生成,这里表示processor foo1生成了var0这个共识变量
+        },
+        {
+            "name" : "var1",
+            "type" : "vec",
+            "location" : "vertex-mapped",
+            "description" : "var1 dummy description",
+            "sources" : ["foo1", "foo2"]
+        },
+        {
+            "name" : "var2",
+            "type" : "vec",
+            "location" : "vertex-mapped",
+            "description" : "var2 dummy description",
+            "sources" : ["foo1", "foo2"]
+        },
+        ...
+    ] 
+}
+```
+
+上述列表是在场处理器运行时生成的，先从单流水线举例说明生成步骤如下：
+
+1. 初始场处理器proc0
+2. proc0
+
+场处理器配置文件举例如下：
+
+```json
+{
+    "configurations" : {
+        "config" : {},
+        "config_schema" : {}
+    }
+}
+```
+
+
+
+### 模型功能特性
 
 1. 几何场GeometricalField（下称gf）和处理流水线（processor、dynamics、model）是独立存在的，模型的流水线可以配置好后，注入gf
 2. gf包含了仿真过程中的所有信息，gf可以随时启停，持久化后还可以继续进行仿真试验
