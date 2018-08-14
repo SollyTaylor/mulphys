@@ -5,7 +5,7 @@ mphs::FieldTraits::FieldTraits(QObject *parent)
     : QObject(parent)
     , location_(mphs::FieldLocation::UndefinedLocation)
     , data_type_(mphs::FieldDataType::UndefinedDataType)
-    , IOType_(mphs::FieldIOType::UndefinedIOType)
+    , io_type_(mphs::FieldIOType::UndefinedIOType)
 {
 
 }
