@@ -6,12 +6,12 @@
 
 namespace mphs {
 
-class FieldTraits : public QObject
+class Consensus : public QObject
 {
     Q_OBJECT
 public:
-    explicit FieldTraits(QObject *parent = nullptr);
-    virtual ~FieldTraits(){}
+    explicit Consensus(QObject *parent = nullptr);
+    virtual ~Consensus(){}
 
     void init(Configurator config);
 
@@ -24,22 +24,10 @@ private:
     // where the physical data located
     FieldLocation location_;
 
-    // activated field data type
+    // field data type
     FieldDataType data_type_;
 
     FieldIOType io_type_;
-
-private:
-
-    double scalar_;
-
-    arma::vec   vData_;
-    arma::ivec  ivData_;
-    arma::uvec  uvData_;
-
-    arma::mat   mData_;
-    arma::imat imData_;
-    arma::umat umData_;
 
 };
 

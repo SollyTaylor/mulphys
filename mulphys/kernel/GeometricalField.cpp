@@ -1,7 +1,6 @@
 #include "GeometricalField.h"
 
-mphs::GeometricalField::GeometricalField(const QString& geometrical_field_name,
-                                         QObject *parent)
+mphs::GeometricalField::GeometricalField(const QString& geometrical_field_name, QObject *parent)
     : QObject(parent)
     , geometrical_field_name_(geometrical_field_name)
 {

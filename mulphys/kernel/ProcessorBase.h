@@ -32,7 +32,7 @@ public:
 
 private:
 
-    QMap<FieldKey, FieldTraits*> field_traits_map_;
+    QMap<FieldKey, Consensus*> field_traits_map_;
 };
 
 }

@@ -2,10 +2,12 @@
 #define GEOMETRICALFIELD_H
 
 #include "Common.h"
-#include "Field.h"
-#include "FieldTraits.h"
+#include "FieldBase.h"
+#include "Consensus.h"
 
 namespace mphs {
+
+class Geometry;
 class GeometricalField : public QObject
 {
     Q_OBJECT
@@ -15,17 +17,14 @@ public:
 
     QString geometrical_field_name() const;
 
+    static void save(const GeometricalField* gf, const QString& file_path);
+
+    static mphs::GeometricalField* load(const QString& file_path);
+
 private:
 
-    /// compulsory fields
-    ///
-    /// vertices, n x 3
-    /// faces, m x k
-    /// vocc, vertices occurrences in elements, n x p
-    /// neighbors
-    /// sectionIndices
-    ///
-    QMap<FieldKey, mphs::Field*> fields_;
+    QMap<FieldKey, mphs::FieldBase*> fields_;
+    Geometry* g_;
 
     QString geometrical_field_name_;
 

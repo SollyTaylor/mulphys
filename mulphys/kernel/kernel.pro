@@ -27,14 +27,18 @@ SOURCES += \
     ReaderBase.cpp \
     Reader.cpp \
     GeometricalField.cpp \
-    Field.cpp \
     Processor.cpp \
-    FieldTraits.cpp \
     Configurator.cpp \
     ProcessorBase.cpp \
     ProcessorComposer.cpp \
     Integrator.cpp \
-    IntegratorBase.cpp
+    IntegratorBase.cpp \
+    Consensus.cpp \
+    Geometry.cpp \
+    FieldBase.cpp \
+    FieldVec.cpp \
+    FieldMat.cpp \
+    FieldScalar.cpp
 
 HEADERS += \
     ComponentBase.h \
@@ -43,16 +47,20 @@ HEADERS += \
     Reader.h \
     ReaderInterface.h \
     GeometricalField.h \
-    Field.h \
     Processor.h \
     ProcessorInterface.h \
     ProcessorBase.h \
-    FieldTraits.h \
     Configurator.h \
     ProcessorComposer.h \
     Integrator.h \
     IntegratorBase.h \
-    IntegratorInterface.h
+    IntegratorInterface.h \
+    Consensus.h \
+    Geometry.h \
+    FieldBase.h \
+    FieldVec.h \
+    FieldMat.h \
+    FieldScalar.h
 
 win32: {
     TARGET = mulphys_kernel_win_x64

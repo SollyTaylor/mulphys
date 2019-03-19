@@ -1,7 +1,7 @@
-#include "FieldTraits.h"
+#include "Consensus.h"
 
 
-mphs::FieldTraits::FieldTraits(QObject *parent)
+mphs::Consensus::Consensus(QObject *parent)
     : QObject(parent)
     , location_(mphs::FieldLocation::UndefinedLocation)
     , data_type_(mphs::FieldDataType::UndefinedDataType)
@@ -10,7 +10,7 @@ mphs::FieldTraits::FieldTraits(QObject *parent)
 
 }
 
-void mphs::FieldTraits::init(mphs::Configurator config)
+void mphs::Consensus::init(mphs::Configurator config)
 {
 
 }
