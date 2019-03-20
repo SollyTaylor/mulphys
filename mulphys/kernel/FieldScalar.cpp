@@ -1,7 +1,7 @@
 #include "FieldScalar.h"
 
-mphs::FieldScalar::FieldScalar(mphs::Geometry *g, QObject *parent)
-    : FieldBase(g, parent)
+mphs::FieldScalar::FieldScalar(QObject *parent)
+    : QObject(parent)
 {
 
 }

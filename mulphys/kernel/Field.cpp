@@ -2,7 +2,7 @@
 
 mphs::FieldBase::FieldBase(mphs::Geometry *geometry, QObject *parent)
     : QObject(parent)
-    , consensus_(new Consensus(parent))
+    , trait_(new FieldTrait(parent))
     , g_(geometry)
 {
 

@@ -1,16 +1,15 @@
 #ifndef FIELDSCALAR_H
 #define FIELDSCALAR_H
 
-#include "FieldBase.h"
+#include "Common.h"
 
 namespace mphs {
 
-class Geometry;
-class FieldScalar : public FieldBase
+class FieldScalar : public QObject
 {
     Q_OBJECT
 public:
-    explicit FieldScalar(Geometry* g, QObject* parent);
+    explicit FieldScalar(QObject* parent);
 
 signals:
 

@@ -6,12 +6,12 @@
 
 namespace mphs {
 
-class Consensus : public QObject
+class FieldTrait : public QObject
 {
     Q_OBJECT
 public:
-    explicit Consensus(QObject *parent = nullptr);
-    virtual ~Consensus(){}
+    explicit FieldTrait(QObject *parent = nullptr);
+    virtual ~FieldTrait(){}
 
     void init(Configurator config);
 

@@ -2,8 +2,8 @@
 #define GEOMETRICALFIELD_H
 
 #include "Common.h"
-#include "FieldBase.h"
-#include "Consensus.h"
+#include "Field.h"
+#include "FieldTrait.h"
 
 namespace mphs {
 
@@ -12,8 +12,7 @@ class GeometricalField : public QObject
 {
     Q_OBJECT
 public:
-    explicit GeometricalField(const QString& geometrical_field_name,
-                              QObject *parent);
+    explicit GeometricalField(const QString& geometrical_field_name, QObject *parent);
 
     QString geometrical_field_name() const;
 
@@ -23,7 +22,8 @@ public:
 
 private:
 
-    QMap<FieldKey, mphs::FieldBase*> fields_;
+    QMap<FieldKey, mphs::Field*> fields_;
+
     Geometry* g_;
 
     QString geometrical_field_name_;

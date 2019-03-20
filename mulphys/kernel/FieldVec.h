@@ -1,24 +1,27 @@
 #ifndef FIELDVEC_H
 #define FIELDVEC_H
 
-#include "FieldBase.h"
+#include "Common.h"
 
 namespace mphs {
 
 class Geometry;
-class FieldVec : public FieldBase
+class FieldVec : public QObject
 {
     Q_OBJECT
-
 public:
+    explicit FieldVec(QObject *parent);
 
-    explicit FieldVec(Geometry* g, QObject* parent);
+signals:
+
+public slots:
 
 private:
 
-    arma::vec value_;
+    arma::vec  value_;
 
 };
+
 
 }
 

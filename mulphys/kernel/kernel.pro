@@ -33,12 +33,13 @@ SOURCES += \
     ProcessorComposer.cpp \
     Integrator.cpp \
     IntegratorBase.cpp \
-    Consensus.cpp \
     Geometry.cpp \
-    FieldBase.cpp \
-    FieldVec.cpp \
     FieldMat.cpp \
-    FieldScalar.cpp
+    FieldScalar.cpp \
+    FieldTrait.cpp \
+    FieldVec.cpp \
+    Field.cpp \
+    FieldUVec.cpp
 
 HEADERS += \
     ComponentBase.h \
@@ -55,12 +56,13 @@ HEADERS += \
     Integrator.h \
     IntegratorBase.h \
     IntegratorInterface.h \
-    Consensus.h \
     Geometry.h \
-    FieldBase.h \
-    FieldVec.h \
     FieldMat.h \
-    FieldScalar.h
+    FieldScalar.h \
+    FieldTrait.h \
+    FieldVec.h \
+    Field.h \
+    FieldUVec.h
 
 win32: {
     TARGET = mulphys_kernel_win_x64

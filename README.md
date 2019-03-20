@@ -257,7 +257,13 @@ simulation
 
 
 
+!!!
 
+性能优化参考：
+
+http://zsaber.com/blog/p/170
+
+!!!
 
 
 

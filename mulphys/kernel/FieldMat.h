@@ -1,24 +1,23 @@
 #ifndef FIELDMAT_H
 #define FIELDMAT_H
 
-#include "FieldBase.h"
+#include "Common.h"
 
 namespace mphs {
 
-class FieldMat : public FieldBase
+class FieldMat : public QObject
 {
     Q_OBJECT
 public:
 
-    explicit FieldMat(Geometry* g, QObject *parent);
+    explicit FieldMat(QObject *parent);
 
 signals:
 
 public slots:
 
 private:
-
-    arma::mat value_;
+    arma::mat  m_;
 };
 
 }
