@@ -1,6 +1,6 @@
-#include "FieldBase.h"
+#include "Field.h"
 
-mphs::FieldBase::FieldBase(mphs::Geometry *geometry, QObject *parent)
+mphs::Field::Field(mphs::Geometry *geometry, QObject *parent)
     : QObject(parent)
     , trait_(new FieldTrait(parent))
     , g_(geometry)
